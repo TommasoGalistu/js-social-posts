@@ -70,6 +70,15 @@ const posts = [
 //     "created": "2021-06-25"
 // },
 
+function convertDateToItalian(dateString) {
+    const [year, month, day] = dateString.split('-');
+    return `${day}/${month}/${year}`;
+}
+
+posts.forEach(post => {
+    post.created = convertDateToItalian(post.created);
+});
+
 
 
 // inserisco le tutte le immagini post in maniera dinamica
