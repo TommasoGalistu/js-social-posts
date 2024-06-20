@@ -74,12 +74,16 @@ const posts = [
 
 // inserisco le tutte le immagini post in maniera dinamica
 posts.forEach(personPost => {
+    if(!personPost.author.image){
+        let arrayLettere = personPost.author.name.match(/[A-Z]/g)
+        personPost.author.iniziali = `${arrayLettere[0]} ${arrayLettere[1]}`
+    }
     containerPost.innerHTML += `
     <div class="post">
         <div class="post__header">
                     <div class="post-meta">                    
                         <div class="post-meta__icon">
-                            <img class="profile-pic" src="${personPost.author.image}" alt="${personPost.author.name}">                    
+                        <img class="profile-pic" src="${personPost.author.image}" alt="${personPost.author.iniziali}">                    
                         </div>
                         <div class="post-meta__data">
                             <div class="post-meta__author">${personPost.author.name}</div>
@@ -110,3 +114,6 @@ posts.forEach(personPost => {
     
 });
 
+let stringa = "Questa è una Stringa con Alcune Lettere Maiuscole: ABCXYZ";
+let maiuscole = stringa.match(/[A-Z]/g);
+console.log();
