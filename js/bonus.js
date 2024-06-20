@@ -63,12 +63,3 @@ containerPost.addEventListener('click', (e) => {
 });
 
 
-// funzione per invertire la stringa data da america a italiana
-function convertDateToItalian(dateString) {
-    const [year, month, day] = dateString.split('-');
-    return `${day}/${month}/${year}`;
-}
-
-posts.forEach(post => {
-    post.created = convertDateToItalian(post.created);
-});
