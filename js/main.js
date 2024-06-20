@@ -110,6 +110,7 @@ posts.forEach(personPost => {
     
 });
 
+let postLike = []
 let numMipiace = document.querySelectorAll('.js-likes-counter');
 // trovo il mi piace e cambio la classe 
 containerPost.addEventListener('click', (e) => {
@@ -118,6 +119,7 @@ containerPost.addEventListener('click', (e) => {
         e.target.parentNode.classList.remove('like-button');
         e.target.parentNode.classList.add('like-button--liked');
         let position = parseInt(e.target.parentElement.attributes[2].value);
+        postLike.push(position);
         numMipiace[position].textContent = ++posts[position].likes
         click = true;
         
@@ -127,7 +129,8 @@ containerPost.addEventListener('click', (e) => {
         e.target.classList.remove('like-button');
         e.target.classList.add('like-button--liked');
         let position = parseInt(e.target.attributes[2].value);
-        numMipiace[position].textContent = ++posts[position].likes
+        postLike.push(position);
+        numMipiace[position].textContent = ++posts[position].likes;
         click = true;
         
     };
