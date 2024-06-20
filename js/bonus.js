@@ -31,7 +31,7 @@ containerPost.addEventListener('click', (e) => {
     }
     // cerco dove ho cliccato, qui clicco sulla i invece che sullo span e succedono
     // le stesse identiche cose a sopra
-    else if(e.target.classList.value === 'like-button js-like-button'){
+    else if(e.target.classList.value === 'like-button js-like-button' || e.target.classList.value === 'js-like-button like-button'){
          // cerco il valore che corrisponde alla posizione del mio oggetto
         let position = parseInt(e.target.attributes[2].value);
         // se il numero non è incluso metto like e incremento
@@ -58,7 +58,7 @@ containerPost.addEventListener('click', (e) => {
         
         
     };
-    console.log()
+    console.log(e.target.classList.value)
 
 });
 
