@@ -70,6 +70,8 @@ const posts = [
 //     "created": "2021-06-25"
 // },
 
+let click = false;
+
 // inserisco le tutte le immagini post in maniera dinamica
 posts.forEach(personPost => {
     containerPost.innerHTML += `
@@ -92,7 +94,7 @@ posts.forEach(personPost => {
                 <div class="post__footer">
                     <div class="likes js-likes">
                         <div class="likes__cta-${personPost.id}">
-                            <a class="like-button js-like-button" href="#" data-postid="1">
+                            <a class="like-button js-like-button" href="#" data-postid="${personPost.id - 1}">
                                 <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                                 <span class="like-button__label">Mi Piace</span>
                             </a>
@@ -105,21 +107,30 @@ posts.forEach(personPost => {
         </div> 
     </div>
                 `
+    
 });
 
-let click = false;
+let numMipiace = document.querySelectorAll('.js-likes-counter');
 // trovo il mi piace e cambio la classe 
 containerPost.addEventListener('click', (e) => {
-    
-    if(e.target.classList.value === 'like-button__label' || e.target.classList.value === 'like-button__icon' && click === false){
-        e.target.parentElement.classList.remove('like-button');
-        e.target.parentElement.classList.add('like-button--liked');
+
+    if(e.target.classList.value === 'like-button__label' || e.target.classList.value === 'like-button__icon fas fa-thumbs-up' && click === false){
+        e.target.parentNode.classList.remove('like-button');
+        e.target.parentNode.classList.add('like-button--liked');
+        let position = parseInt(e.target.parentElement.attributes[2].value);
+        numMipiace[position].textContent = ++posts[position].likes
         click = true;
-    }else if(e.target.classList.value === 'like-button js-like-button'  && click === false){
+        
+    }
+    else if(e.target.classList.value === 'like-button js-like-button'  && click === false){
+        
         e.target.classList.remove('like-button');
         e.target.classList.add('like-button--liked');
+        let position = parseInt(e.target.attributes[2].value);
+        numMipiace[position].textContent = ++posts[position].likes
         click = true;
+        
     };
-    
+   
     
 });
