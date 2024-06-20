@@ -91,7 +91,7 @@ posts.forEach(personPost => {
                 </div>
                 <div class="post__footer">
                     <div class="likes js-likes">
-                        <div class="likes__cta">
+                        <div class="likes__cta-${personPost.id}">
                             <a class="like-button js-like-button" href="#" data-postid="1">
                                 <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                                 <span class="like-button__label">Mi Piace</span>
@@ -107,13 +107,19 @@ posts.forEach(personPost => {
                 `
 });
 
-
+let click = false;
 // trovo il mi piace e cambio la classe 
 containerPost.addEventListener('click', (e) => {
     
-    e.target.classList.remove('like-button');
-    e.target.classList.add('like-button--liked');
-    console.log(e.target)
+    if(e.target.classList.value === 'like-button__label' || e.target.classList.value === 'like-button__icon' && click === false){
+        e.target.parentElement.classList.remove('like-button');
+        e.target.parentElement.classList.add('like-button--liked');
+        click = true;
+    }else if(e.target.classList.value === 'like-button js-like-button'  && click === false){
+        e.target.classList.remove('like-button');
+        e.target.classList.add('like-button--liked');
+        click = true;
+    };
+    
+    
 });
-
-
