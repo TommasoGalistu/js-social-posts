@@ -3,7 +3,7 @@ let postLike = []
 let numMipiace = document.querySelectorAll('.js-likes-counter');
 // trovo il mi piace e cambio la classe 
 containerPost.addEventListener('click', (e) => {
-
+    e.preventDefault()
     // cerco dove ho cliccato
     if(e.target.classList.value === 'like-button__label' || e.target.classList.value === 'like-button__icon fas fa-thumbs-up'){
         // cerco il valore che corrisponde alla posizione del mio oggetto
@@ -61,5 +61,7 @@ containerPost.addEventListener('click', (e) => {
     console.log(e.target.classList.value)
 
 });
+
+
 
 
